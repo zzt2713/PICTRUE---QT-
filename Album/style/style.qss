@@ -1,0 +1,114 @@
+
+MainWindow {
+    background-color:rgb(46,47,48);
+}
+
+
+QMenuBar {
+    color:rgb(231,231,231);
+    background-color:rgb(46,47,48);
+}
+
+QMenu {
+    color:rgb(231,231,231);
+    background-color:rgb(55,55,55);
+}
+
+QMenuBar::item:selected {
+    background-color:rgb(80,80,80);
+}
+
+QMenu::item:selected {
+    background-color:rgb(39,96,154);
+}
+
+QWizard {
+    color:rgb(231,231,231);
+    background-color:rgb(46,47,48);
+}
+
+QWizard QLabel#tips {
+    color : red;
+}
+
+proSetPage {
+    background-color: #f0f0f0;
+    border: 1px solid #cccccc;
+}
+
+proSetPage QLabel {
+    color: #333333;
+    font-size: 14px;
+}
+
+proSetPage QPushButton {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+proSetPage QPushButton:hover {
+    background-color: #005fa3;
+}
+
+proSetPage QLineEdit {
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white;
+    color:black;
+}
+
+conFirmPage QLabel {
+    color:black;
+}
+
+QTreeView {
+    background-color: rgb(46,47,48);
+    color: rgb(231,231,231);
+    border:0;
+}
+
+QTreeView::item:hover {
+    background-color: rgb(38,95,153);
+}
+
+QTreeView::item:selected {
+    background-color: rgb(38,95,153);
+}
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings{
+    image: url(:/icon/down.png);
+}
+
+QTreeView::branch:closed:has-children:!has-siblings,
+QTreeView::branch:closed:has-children:has-siblings{
+    image: url(:/icon/right.png);
+}
+
+ProTree {
+    border-color: #9F9F9F;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    padding-right: 10px;
+}
+
+QLabel#labelPro {
+    color: rgb(231,231,231);
+    border-color: #9F9F9F;
+    border-style: dotted;
+    border-width: 0 0 1px 0;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
