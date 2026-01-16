@@ -14,7 +14,7 @@
 #include <QQueue>
 
 ProTreeWidget::ProTreeWidget(QWidget *parent):QTreeWidget(parent),_right_btn_item(nullptr),
-    _active_item(nullptr),_dialog_progress(nullptr),_selected_item(nullptr),
+    _active_item(nullptr),_dialog_progress(nullptr),_selected_item(nullptr),_dialog_progressdlg(nullptr),
     _thread_create(nullptr),_thread_open(nullptr)
 {
     this->header()->hide();
@@ -270,6 +270,18 @@ void ProTreeWidget::SlotOpenPro(const QString &path)
     _thread_open->start();
 
     Logger::getInstance().log("文件:" + proname.toStdString() + "正在导入",INFO);
+
+    _dialog_progressdlg = new QProgressDialog(this);
+    connect(_thread_open.get(), &OpenTreeThread::SigUpdateProgress,
+            this, &ProTreeWidget::SlotUpOpenProgress);
+
+    connect(_thread_open.get(), &OpenTreeThread::SigFinishProgress, this,
+            &ProTreeWidget::SlotFinishOpenProgress);
+
+    _dialog_progressdlg->setWindowTitle("Please wait...");
+    _dialog_progressdlg->setFixedWidth(PROGRESS_WIDTH);
+    _dialog_progressdlg->setRange(0, PROGRESS_MAX);
+    _dialog_progressdlg->exec();
 }
 
 void ProTreeWidget::SlotImport()
@@ -316,9 +328,7 @@ void ProTreeWidget::SlotImport()
     _dialog_progress->setFixedWidth(PROGRESS_WIDTH);
     _dialog_progress->setRange(0,PROGRESS_WIDTH);
     _dialog_progress->exec();
-
 }
-
 
 void ProTreeWidget::SlotUpdateProgress(int count)
 {
@@ -346,3 +356,37 @@ void ProTreeWidget::SlotCancelProgress()
     delete _dialog_progress;
     _dialog_progress = nullptr;
 }
+
+void ProTreeWidget::SlotUpOpenProgress(int count)
+{
+    if(!_dialog_progressdlg){
+        return;
+    }
+    if(count >= PROGRESS_MAX){
+        _dialog_progressdlg->setValue(count % PROGRESS_MAX);
+    }else{
+        _dialog_progressdlg->setValue(count % PROGRESS_MAX);
+    }
+
+}
+
+void ProTreeWidget::SlotFinishOpenProgress()
+{
+    if(!_dialog_progressdlg){
+        return;
+    }
+    _dialog_progressdlg->setValue(PROGRESS_MAX);
+    delete  _dialog_progressdlg;
+    _dialog_progressdlg = nullptr;
+}
+
+void ProTreeWidget::SlotCancelOPenProgress()
+{
+
+}
+
+
+
+
+
+

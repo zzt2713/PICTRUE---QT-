@@ -31,5 +31,9 @@
         <file>icon/show.jpg</file>
         <file>icon/slideshow.png</file>
         <file>style/style.qss</file>
+        <file>music/background.m4a</file>
+        <file>music/1.m4a</file>
+        <file>music/2.m4a</file>
+        <file>music/3.m4a</file>
     </qresource>
 </RCC>

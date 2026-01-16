@@ -51,6 +51,9 @@ static constexpr auto qt_meta_stringdata_ZN13ProTreeWidgetE = QtMocHelpers::stri
     "count",
     "SlotFinishProgress",
     "SlotCancelProgress",
+    "SlotUpOpenProgress",
+    "SlotFinishOpenProgress",
+    "SlotCancelOPenProgress",
     "SlotOpenPro",
     "path"
 );
@@ -64,7 +67,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN13ProTreeWidgetE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -72,17 +75,20 @@ Q_CONSTINIT static const uint qt_meta_data_ZN13ProTreeWidgetE[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   68,    2, 0x06,    1 /* Public */,
+       1,    0,   86,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    2,   69,    2, 0x08,    2 /* Private */,
-       7,    0,   74,    2, 0x08,    5 /* Private */,
-       8,    0,   75,    2, 0x08,    6 /* Private */,
-       9,    0,   76,    2, 0x08,    7 /* Private */,
-      10,    1,   77,    2, 0x08,    8 /* Private */,
-      12,    0,   80,    2, 0x08,   10 /* Private */,
-      13,    0,   81,    2, 0x08,   11 /* Private */,
-      14,    1,   82,    2, 0x0a,   12 /* Public */,
+       3,    2,   87,    2, 0x08,    2 /* Private */,
+       7,    0,   92,    2, 0x08,    5 /* Private */,
+       8,    0,   93,    2, 0x08,    6 /* Private */,
+       9,    0,   94,    2, 0x08,    7 /* Private */,
+      10,    1,   95,    2, 0x08,    8 /* Private */,
+      12,    0,   98,    2, 0x08,   10 /* Private */,
+      13,    0,   99,    2, 0x08,   11 /* Private */,
+      14,    1,  100,    2, 0x08,   12 /* Private */,
+      15,    0,  103,    2, 0x08,   14 /* Private */,
+      16,    0,  104,    2, 0x08,   15 /* Private */,
+      17,    1,  105,    2, 0x0a,   16 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -95,7 +101,10 @@ Q_CONSTINIT static const uint qt_meta_data_ZN13ProTreeWidgetE[] = {
     QMetaType::Void, QMetaType::Int,   11,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   15,
+    QMetaType::Void, QMetaType::Int,   11,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   18,
 
        0        // eod
 };
@@ -128,6 +137,13 @@ Q_CONSTINIT const QMetaObject ProTreeWidget::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'SlotCancelProgress'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'SlotUpOpenProgress'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'SlotFinishOpenProgress'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'SlotCancelOPenProgress'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'SlotOpenPro'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
@@ -148,7 +164,10 @@ void ProTreeWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 5: _t->SlotUpdateProgress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 6: _t->SlotFinishProgress(); break;
         case 7: _t->SlotCancelProgress(); break;
-        case 8: _t->SlotOpenPro((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 8: _t->SlotUpOpenProgress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 9: _t->SlotFinishOpenProgress(); break;
+        case 10: _t->SlotCancelOPenProgress(); break;
+        case 11: _t->SlotOpenPro((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
@@ -183,14 +202,14 @@ int ProTreeWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 12;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 12;
     }
     return _id;
 }

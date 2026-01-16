@@ -3,6 +3,7 @@
 #include <string>
 #include "protreeitem.h"
 #include "const.h"
+
 ProTreeThread::ProTreeThread(const QString &src_path, const QString &dist_path,
     QTreeWidgetItem *parent_item, int &file_count, QTreeWidget *self, QTreeWidgetItem *root,
     QObject *parent): QThread (parent),_src_path(src_path),_dist_path(dist_path),

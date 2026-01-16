@@ -32,7 +32,7 @@ private:
     QAction *_action_slideshow;
 
     QProgressDialog *_dialog_progress;
-
+    QProgressDialog *_dialog_progressdlg;
     std::shared_ptr<ProTreeThread> _thread;
     std::shared_ptr<ProTreeThread> _thread_create;
     std::shared_ptr<OpenTreeThread> _thread_open;
@@ -52,11 +52,16 @@ private slots:
     void SlotFinishProgress();
     void SlotCancelProgress();
 
+    void SlotUpOpenProgress(int count);
+    void SlotFinishOpenProgress();
+    void SlotCancelOPenProgress();
+
 public slots:
     void SlotOpenPro(const QString &path);
 
 signals:
     void SigCancelProgress();
+
 };
 
 #endif // PROTREEWIDGET_H

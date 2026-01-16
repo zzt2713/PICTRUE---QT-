@@ -7,6 +7,7 @@
 *****************************************************************************/
 
 #include "../../../mainwindow.h"
+#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -42,7 +43,19 @@ static constexpr auto qt_meta_stringdata_ZN10MainWindowE = QtMocHelpers::stringD
     "",
     "path",
     "createPro",
-    "OpenPro"
+    "OpenPro",
+    "toggleMusic",
+    "updateVolume",
+    "volume",
+    "musicStateChanged",
+    "QMediaPlayer::PlaybackState",
+    "state",
+    "onMusicErrorOccurred",
+    "QMediaPlayer::Error",
+    "error",
+    "errorString",
+    "onPlayPauseClicked",
+    "loadDefaultMusic"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -54,7 +67,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN10MainWindowE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,11 +75,17 @@ Q_CONSTINIT static const uint qt_meta_data_ZN10MainWindowE[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   32,    2, 0x06,    1 /* Public */,
+       1,    1,   68,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    1,   35,    2, 0x08,    3 /* Private */,
-       5,    1,   38,    2, 0x08,    5 /* Private */,
+       4,    1,   71,    2, 0x08,    3 /* Private */,
+       5,    1,   74,    2, 0x08,    5 /* Private */,
+       6,    1,   77,    2, 0x08,    7 /* Private */,
+       7,    1,   80,    2, 0x08,    9 /* Private */,
+       9,    1,   83,    2, 0x08,   11 /* Private */,
+      12,    2,   86,    2, 0x08,   13 /* Private */,
+      16,    0,   91,    2, 0x08,   16 /* Private */,
+      17,    0,   92,    2, 0x08,   17 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -74,6 +93,12 @@ Q_CONSTINIT static const uint qt_meta_data_ZN10MainWindowE[] = {
  // slots: parameters
     QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, QMetaType::Bool,    2,
+    QMetaType::Void, QMetaType::Int,    8,
+    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 13, QMetaType::QString,   14,   15,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -95,7 +120,24 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<bool, std::false_type>,
         // method 'OpenPro'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<bool, std::false_type>
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'toggleMusic'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<bool, std::false_type>,
+        // method 'updateVolume'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        // method 'musicStateChanged'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QMediaPlayer::PlaybackState, std::false_type>,
+        // method 'onMusicErrorOccurred'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QMediaPlayer::Error, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        // method 'onPlayPauseClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'loadDefaultMusic'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -108,6 +150,12 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->SigOpenPro((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 1: _t->createPro((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
         case 2: _t->OpenPro((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 3: _t->toggleMusic((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 4: _t->updateVolume((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 5: _t->musicStateChanged((*reinterpret_cast< std::add_pointer_t<QMediaPlayer::PlaybackState>>(_a[1]))); break;
+        case 6: _t->onMusicErrorOccurred((*reinterpret_cast< std::add_pointer_t<QMediaPlayer::Error>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 7: _t->onPlayPauseClicked(); break;
+        case 8: _t->loadDefaultMusic(); break;
         default: ;
         }
     }
@@ -142,14 +190,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 9;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
+        if (_id < 9)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 3;
+        _id -= 9;
     }
     return _id;
 }

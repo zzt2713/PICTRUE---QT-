@@ -26,6 +26,16 @@ void OpenTreeThread::OpenProTree(const QString &src_path, int &file_count, QTree
 void OpenTreeThread::run()
 {
     OpenProTree(_src_path,_file_count,_self);
+    if(_bstop&&_root){
+        auto path = dynamic_cast<ProTreeItem*>(_root)->GetPath();
+        auto index = _self->indexOfTopLevelItem(_root);
+        delete _self->takeTopLevelItem(index);
+        QDir dir(path);
+        dir.removeRecursively();
+        return;
+    }
+
+    emit SigFinishProgress(_file_count);
 }
 
 void OpenTreeThread::RecursiveProTree( const QString &src_path, int &file_count, QTreeWidget *self,
@@ -92,5 +102,5 @@ void OpenTreeThread::RecursiveProTree( const QString &src_path, int &file_count,
         }
     }
 
-    emit SigFinishProgress(file_count);
+    //emit SigFinishProgress(file_count);
 }
